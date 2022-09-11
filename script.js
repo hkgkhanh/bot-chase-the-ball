@@ -9,8 +9,13 @@ let snitch;
 let score1 = 0;
 let score2 = 0;
 
+let fr = 60;
+let timeElapsed = 0;
+let maxTime = 30; // second
+
 function setup() {
 	createCanvas(w, h);
+	frameRate(fr);
 
 	gamemode = prompt("gamemode: input '2' or '4'");
 
@@ -82,7 +87,13 @@ function draw() {
     		snitch = new Target(random(width), random(height));
     		score2++;
   		}
-  		if ((score2 == 4 && score1 == 4) || score2 == 5 || score1 == 5) {
+  		/*if ((score2 == 4 && score1 == 4) || score2 == 5 || score1 == 5) {
+			let scoreParagraph = p1Name + "🔴 " + "<br>" + p3Name + "🟠 " + score1 + "<br>" + p2Name + "🔵 " + "<br>" + p4Name + "🟢 " + score2;
+			createP(scoreParagraph).style('font-size', '20px').position(w + 30, 250);
+			noLoop();
+		}*/
+
+		if (frameCount > fr * maxTime) {
 			let scoreParagraph = p1Name + "🔴 " + "<br>" + p3Name + "🟠 " + score1 + "<br>" + p2Name + "🔵 " + "<br>" + p4Name + "🟢 " + score2;
 			createP(scoreParagraph).style('font-size', '20px').position(w + 30, 250);
 			noLoop();
@@ -99,7 +110,13 @@ function draw() {
     		snitch = new Target(random(width), random(height));
     		score2++;
   		}
-  		if ((score2 == 2 && score1 == 2) || score2 == 3 || score1 == 3) {
+  		/*if ((score2 == 2 && score1 == 2) || score2 == 3 || score1 == 3) {
+			let scoreParagraph = p1Name + "🔴 " + score1 + "<br>" + p2Name + "🔵 " + score2;
+			createP(scoreParagraph).style('font-size', '20px').position(w + 30, 250);
+			noLoop();
+		}*/
+
+		if (frameCount > fr * maxTime) {
 			let scoreParagraph = p1Name + "🔴 " + score1 + "<br>" + p2Name + "🔵 " + score2;
 			createP(scoreParagraph).style('font-size', '20px').position(w + 30, 250);
 			noLoop();
@@ -121,6 +138,10 @@ function draw() {
 		player4.show();
 	}
 	snitch.show();
+
+	//let timeParagraph = "time: " + str(floor(frameCount / fr)) + "/" + str(maxTime);
+	let timeParagraph = "time left: " + str(maxTime - floor(frameCount / fr));
+	createP(timeParagraph).style('font-size', '20px').position(w + 30, 50);
 
 	if (gamemode == "4") {
 		let scoreParagraph = p1Name + "🔴 " + "<br>" + p3Name + "🟠 " + score1 + "<br>" + p2Name + "🔵 " + "<br>" + p4Name + "🟢 " + score2;

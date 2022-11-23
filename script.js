@@ -22,8 +22,8 @@ function setup() {
 	if (gamemode == "2") {
 		p1Name = prompt("player 1 name:");
 		p2Name = prompt("player 2 name:");
-		player1 = new Player1(w/3, h/2);
-		player2 = new Player2(2*w/3, h/2);
+		player1 = new Player1(0, h/2);
+		player2 = new Player2(w, h/2);
 	}
 
 	if (gamemode == "4") {
@@ -31,10 +31,10 @@ function setup() {
 		p2Name = prompt("player 2 name:");
 		p3Name = prompt("player 3 name:");
 		p4Name = prompt("player 4 name:");
-		player1 = new Player1(w/3, h/3);
-		player2 = new Player2(2*w/3, h/3);
-		player3 = new Player3(2*w/3, 2*h/3);
-		player4 = new Player4(w/3, 2*h/3);
+		player1 = new Player1(0, h/3);
+		player2 = new Player2(w, h/3);
+		player3 = new Player3(w, 2*h/3);
+		player4 = new Player4(0, 2*h/3);
 	}
 
 	snitch = new Target(random(width), random(height));
